@@ -215,9 +215,10 @@ fun HomeScreen(vm: NotesViewModel) {
                         TextButton(onClick = { vm.emptyTrash() }) { Text("Очистить") }
                     }
                 }
+                val motion = MaterialTheme.motionScheme
                 AnimatedContent(
                     targetState = sections.isEmpty,
-                    transitionSpec = { fadeIn(MaterialTheme.motionScheme.slowEffectsSpec()).togetherWith(fadeOut()) },
+                    transitionSpec = { fadeIn(motion.slowEffectsSpec()).togetherWith(fadeOut()) },
                     label = "empty",
                 ) { empty ->
                     if (empty) EmptyState(filter, query.isNotBlank() || colorFilter >= 0)
